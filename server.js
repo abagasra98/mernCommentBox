@@ -2,13 +2,14 @@ require('dotenv').config();
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var Comment = require('./model/comments');
 
 var app = express();
 var router = express.Router();
 var port = process.env.API_PORT || 3001;
 
 // db config
-mongoose.connect('mongodb://' + process.env.DB_USER + ':' + process.env.DB_PASS + '@' + process.env.DB_PASS);
+mongoose.connect('mongodb://' + process.env.DB_USER + ':' + process.env.DB_PASS + '@' + process.env.DB_HOST);
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
